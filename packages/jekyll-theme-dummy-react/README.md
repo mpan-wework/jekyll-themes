@@ -1,3 +1,7 @@
+# jekyll-theme-dummy-react
+
+[![npm version](https://badge.fury.io/js/%40mpan-wework%2Fjekyll-theme-dummy-react.svg)](https://www.npmjs.com/package/@mpan-wework/jekyll-theme-dummy-react)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

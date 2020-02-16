@@ -13,6 +13,11 @@
     "public",
     "src"
   ],
+  "keywords": [
+    "jekyll",
+    "react",
+    "reactjs"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
@@ -27,6 +32,7 @@
     "build": "node bin/build.js",
     "postbuild": "mv build dist",
     "test": "react-scripts test",
+    "publish": "npm run publish:npm && npm run publish:github",
     "publish:npm": "npm publish --registry https://registry.npmjs.org/ --access=public",
     "publish:github": "npm publish --registry=https://npm.pkg.github.com/",
     "eject": "react-scripts eject"
