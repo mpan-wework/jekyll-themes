@@ -1,6 +1,6 @@
 {
   "name": "@mpan-wework/jekyll-theme-dummy-react",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/mpan-wework/jekyll-themes.git",
@@ -32,7 +32,6 @@
     "build": "node bin/build.js",
     "postbuild": "mv build dist",
     "test": "react-scripts test",
-    "publish": "npm run publish:npm && npm run publish:github",
     "publish:npm": "npm publish --registry https://registry.npmjs.org/ --access=public",
     "publish:github": "npm publish --registry=https://npm.pkg.github.com/",
     "eject": "react-scripts eject"
