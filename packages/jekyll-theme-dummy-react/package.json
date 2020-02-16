@@ -1,7 +1,18 @@
 {
-  "name": "jekyll-theme-dummy-react",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@mpan-wework/jekyll-theme-dummy-react",
+  "version": "0.1.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpan-wework/jekyll-themes.git",
+    "directory": "packages/jekyll-theme-dummy-react"
+  },
+  "license": "MIT",
+  "files": [
+    "bin",
+    "dist",
+    "public",
+    "src"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
@@ -12,8 +23,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "prebuild": "rm -rf build dist",
+    "build": "node bin/build.js",
+    "postbuild": "mv build dist",
     "test": "react-scripts test",
+    "publish:npm": "npm publish --registry https://registry.npmjs.org/ --access=public",
+    "publish:github": "npm publish --registry=https://npm.pkg.github.com/",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -30,5 +45,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-flowtype": "^3.13.0",
+    "rewire": "^4.0.1",
+    "typescript": "^3.7.5"
   }
 }
