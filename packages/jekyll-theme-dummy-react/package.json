@@ -34,7 +34,8 @@
     "test": "react-scripts test",
     "publish:npm": "npm publish --registry https://registry.npmjs.org/ --access=public",
     "publish:github": "npm publish --registry=https://npm.pkg.github.com/",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postversion": "node ../../scripts/post-version.js $npm_package_repository_directory"
   },
   "eslintConfig": {
     "extends": "react-app"
