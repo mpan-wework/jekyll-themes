@@ -6,6 +6,7 @@
     "url": "https://github.com/mpan-wework/jekyll-themes.git",
     "directory": "packages/jekyll-theme-dummy-react"
   },
+  "homepage": "https://github.com/mpan-wework/jekyll-themes/tree/master/packages/jekyll-theme-dummy-react",
   "license": "MIT",
   "files": [
     "bin",
