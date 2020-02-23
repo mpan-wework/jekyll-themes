@@ -1,11 +1,31 @@
 {
-  "name": "jekyll-theme-dummy-vue",
+  "name": "@mpan-wework/jekyll-theme-dummy-vue",
   "version": "0.1.0",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpan-wework/jekyll-themes.git",
+    "directory": "packages/jekyll-theme-dummy-vue"
+  },
+  "license": "MIT",
+  "files": [
+    "build",
+    "dist",
+    "public",
+    "src"
+  ],
+  "keywords": [
+    "jekyll",
+    "vue",
+    "vuejs"
+  ],
   "scripts": {
+    "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint --no-fix",
+    "publish:npm": "npm publish --registry https://registry.npmjs.org/ --access=public",
+    "publish:github": "npm publish --registry=https://npm.pkg.github.com/",
+    "postversion": "node ../../scripts/post-version.js $npm_package_repository_directory"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -27,6 +47,9 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "prettier": "^1.19.1",
-    "vue-template-compiler": "^2.6.11"
+    "typescript": "^3.8.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.41.6",
+    "webpack-chain": "^6.4.0"
   }
 }
