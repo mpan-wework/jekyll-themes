@@ -9,4 +9,4 @@ webpackConfig.output.filename = 'static/js/[name].js';
 webpackConfig.optimization.splitChunks = { cacheGroups: { default: false } };
 webpackConfig.optimization.runtimeChunk = false;
 webpackConfig.plugins.find(plugin => plugin.__proto__.constructor.name === 'MiniCssExtractPlugin').options.filename = 'static/css/[name].css';
-webpackConfig.plugins.find(plugin => plugin.__proto__.constructor.name === 'MiniCssExtractPlugin').options.moduleFilename = () => 'static/css/main.css';
+webpackConfig.plugins.find(plugin => plugin.__proto__.constructor.name === 'MiniCssExtractPlugin').options.moduleFilename = () => 'static/css/[name].css';
