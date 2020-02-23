@@ -5,8 +5,12 @@ import store from './store';
 
 Vue.config.productionTip = false;
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount('#app');
+Promise.resolve().then(async () => {
+  const postEl = document.getElementById('post');
+  const vm = new Vue({
+    router,
+    store,
+    render: (h) => h(App, {}, [postEl.innerHTML]),
+  });
+  vm.$mount(postEl.parentElement);
+});

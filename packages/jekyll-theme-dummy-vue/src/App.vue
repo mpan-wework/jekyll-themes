@@ -1,32 +1,59 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="App">
+    <div class="navSide">
+      <NavSide />
     </div>
-    <router-view />
+    <div class="container">
+      <div class="navTop">
+        <NavTop />
+      </div>
+      <div class="content">
+        <slot />
+      </div>
+    </div>
   </div>
 </template>
 
+<script>
+import NavSide from './components/navigation/NavSide';
+import NavTop from './components/navigation/NavTop';
+
+export default {
+  name: 'App',
+  components: {
+    NavSide,
+    NavTop,
+  },
+};
+</script>
+
 <style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  padding: 0.5rem;
 }
 
-#nav {
-  padding: 30px;
+.navSide {
+  flex: 0 0 12.5rem;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5rem;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.navTop {
+  flex: 0 0 3.125rem;
+}
+
+.content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: scroll;
+  margin-top: 0.5rem;
 }
 </style>
