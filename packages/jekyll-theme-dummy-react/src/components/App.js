@@ -1,6 +1,7 @@
 import React from 'react';
 import NavSide from './navigation/NavSide';
 import NavTop from './navigation/NavTop';
+import HtmlWrapper from './html/HtmlWrapper';
 import styles from './App.module.scss';
 
 const App = ({ children }) => {
@@ -13,7 +14,7 @@ const App = ({ children }) => {
         <div className={styles.navTop}>
           <NavTop />
         </div>
-        <div className={styles.content} dangerouslySetInnerHTML={{__html: children}} />
+        <HtmlWrapper className={styles.content} html={children} />
       </div>
     </div>
   );
