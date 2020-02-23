@@ -6,11 +6,13 @@ import store from './store';
 Vue.config.productionTip = false;
 
 Promise.resolve().then(async () => {
-  const postEl = document.getElementById('post');
+  const postOuterHTML = document.getElementById('post').outerHTML;
+  const rootEl = document.getElementById('root');
   const vm = new Vue({
     router,
     store,
-    render: (h) => h(App, {}, [postEl.innerHTML]),
+    render: (h) =>
+      h('div', { attrs: { id: 'root' } }, [h(App, {}, [postOuterHTML])]),
   });
-  vm.$mount(postEl.parentElement);
+  vm.$mount(rootEl);
 });

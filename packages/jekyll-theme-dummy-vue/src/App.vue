@@ -8,7 +8,7 @@
         <NavTop />
       </div>
       <div class="content">
-        <slot />
+        <HtmlWrapper :html="$slots.default[0].text" />
       </div>
     </div>
   </div>
@@ -17,17 +17,19 @@
 <script>
 import NavSide from './components/navigation/NavSide';
 import NavTop from './components/navigation/NavTop';
+import HtmlWrapper from './components/html/HtmlWrapper';
 
 export default {
   name: 'App',
   components: {
     NavSide,
     NavTop,
+    HtmlWrapper,
   },
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .App {
   width: 100vw;
   height: 100vh;
