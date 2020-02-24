@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://unpkg.com/@mpan-wework/normalize.min.css/dist/normalize.min.css" />
+<link id="theme-css" rel="stylesheet" href="" />
+</head>
+<body>
+<div id="root"><main id="post"><h2>Jekyll Themes</h2><p>Repo: https://github.com/mpan-wework/jekyll-themes</p></main></div>
+<select id="theme" onchange="setTheme(value)" style="position:fixed;top:0;right:0">
+<option disabled selected value>Select</option>
+<option value="react">React</option>
+<option value="vue">Vue</option>
+</select>
+<script>
+const setTheme = (value) => {
+  switch (value) {
+    case 'react': {
+      const rootEl = document.getElementById('root');
+      const postEl = document.getElementById('post');
+      while (rootEl.lastChild) {
+        rootEl.removeChild(rootEl.lastChild);
+      }
+      rootEl.appendChild(postEl);
+      const cssEl = document.getElementById('theme-css');
+      cssEl.href = 'https://unpkg.com/@mpan-wework/jekyll-theme-dummy-react/dist/static/css/main.css';
+      const jsEl = document.getElementById('theme-js');
+      const jsParentEl = jsEl.parentNode;
+      jsParentEl.removeChild(jsEl);
+      const newJsEl = document.createElement('script');
+      newJsEl.id = 'theme-js';
+      newJsEl.src = 'https://unpkg.com/@mpan-wework/jekyll-theme-dummy-react/dist/static/js/main.js';
+      jsParentEl.appendChild(newJsEl);
+      break;
+    }
+    case 'vue': {
+      const rootEl = document.getElementById('root');
+      const postEl = document.getElementById('post');
+      while (rootEl.lastChild) {
+        rootEl.removeChild(rootEl.lastChild);
+      }
+      rootEl.appendChild(postEl);
+      const cssEl = document.getElementById('theme-css');
+      cssEl.href = 'https://unpkg.com/@mpan-wework/jekyll-theme-dummy-vue/dist/css/app.css';
+      const jsEl = document.getElementById('theme-js');
+      const jsParentEl = jsEl.parentNode;
+      jsParentEl.removeChild(jsEl);
+      const newJsEl = document.createElement('script');
+      newJsEl.id = 'theme-js';
+      newJsEl.src = 'https://unpkg.com/@mpan-wework/jekyll-theme-dummy-vue/dist/js/app.js';
+      jsParentEl.appendChild(newJsEl);
+      break;
+    }
+  }
+};
+</script>
+<script id="theme-js" src=""></script>
+</body>
+</html>
