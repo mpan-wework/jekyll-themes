@@ -1,0 +1,25 @@
+{
+  "name": "@mpan-wework/jekyll-theme-manager",
+  "version": "0.1.0",
+  "description": "Jekyll Theme Manager",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpan-wework/jekyll-themes.git",
+    "directory": "packages/jekyll-theme-manager"
+  },
+  "homepage": "https://github.com/mpan-wework/jekyll-themes/tree/master/packages/jekyll-theme-manager",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "ncc build index.js -o dist -m -C -q",
+    "publish:npm": "npm publish --registry https://registry.npmjs.org/ --access=public",
+    "publish:github": "npm publish --registry=https://npm.pkg.github.com/",
+    "postversion": "node ../../scripts/post-version.js $npm_package_repository_directory"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.21.1"
+  }
+}
