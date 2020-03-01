@@ -1,0 +1,29 @@
+{
+  "name": "@mpan-wework/jekyll-theme-manager",
+  "version": "0.1.0",
+  "description": "Jekyll Theme Manager",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpan-wework/jekyll-themes.git",
+    "directory": "packages/jekyll-theme-manager"
+  },
+  "homepage": "https://github.com/mpan-wework/jekyll-themes/tree/master/packages/jekyll-theme-manager",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "publish:npm": "npm publish --registry https://registry.npmjs.org/ --access=public",
+    "publish:github": "npm publish --registry=https://npm.pkg.github.com/",
+    "postversion": "node ../../scripts/post-version.js $npm_package_repository_directory"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@rollup/plugin-buble": "^0.21.1",
+    "rollup": "^1.32.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-uglify-es": "0.0.1"
+  }
+}
