@@ -8,7 +8,9 @@
         <NavTop />
       </div>
       <div class="content">
-        <HtmlWrapper :html="$slots.default[0].text" />
+        <router-view>
+          <slot />
+        </router-view>
       </div>
     </div>
   </div>
@@ -17,14 +19,12 @@
 <script>
 import NavSide from './components/navigation/NavSide';
 import NavTop from './components/navigation/NavTop';
-import HtmlWrapper from './components/html/HtmlWrapper';
 
 export default {
   name: 'App',
   components: {
     NavSide,
     NavTop,
-    HtmlWrapper,
   },
 };
 </script>
