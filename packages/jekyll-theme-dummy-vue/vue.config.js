@@ -9,6 +9,7 @@ const config = {
   devServer: {
     port: 44444,
   },
+  lintOnSave: 'warning',
 };
 
 module.exports = config;
