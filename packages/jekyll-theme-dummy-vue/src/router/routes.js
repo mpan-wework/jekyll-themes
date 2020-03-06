@@ -8,7 +8,7 @@ const routes = [
     component: Home,
   },
   {
-    path: '/posts/:post',
+    path: '/posts/:post(.+)',
     component: Post,
   },
   {
