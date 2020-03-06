@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
+window.REACT_APP_VERSION = process.env.REACT_APP_VERSION;
+
 Promise.resolve().then(async () => {
   const postOuterHTML = document.getElementById('post').outerHTML;
   const rootEl = document.getElementById('root');
