@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 
-import RouterView from  '../router/RouterView';
+import RouterView from '../router/RouterView';
 import NavSide from './navigation/NavSide';
 import NavTop from './navigation/NavTop';
 import styles from './App.module.scss';
@@ -24,6 +24,6 @@ const App = (props) => {
       </div>
     </Router>
   );
-}
+};
 
 export default App;
