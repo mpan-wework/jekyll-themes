@@ -10,7 +10,7 @@ const getBaseurl = async () => {
     } catch (error) {
       console.error(error);
     }
-    baseurl += `${baseurl}/${parts[i]}`;
+    baseurl += `/${parts[i]}`;
   }
   window.baseurl = baseurl;
 };
