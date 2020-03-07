@@ -24,6 +24,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --no-fix",
+    "eslint": "eslint src --ext .js,.jsx,.vue",
     "publish:npm": "npm publish --registry https://registry.npmjs.org/ --access=public",
     "publish:github": "npm publish --registry=https://npm.pkg.github.com/",
     "postversion": "node ../../scripts/post-version.js $npm_package_repository_directory"
