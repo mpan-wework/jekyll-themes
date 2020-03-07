@@ -1,8 +1,8 @@
 import Vue from 'vue';
+import getBaseurl from './util/baseurl';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import getBaseurl from './util/baseurl';
 
 window.VUE_APP_VERSION = process.env.VUE_APP_VERSION;
 
@@ -12,13 +12,14 @@ Vue.config.devtools = true;
 Promise.resolve()
   .then(getBaseurl)
   .then(async () => {
-    const postOuterHTML = document.getElementById('post').outerHTML;
+    const postEl = document.getElementById('post');
     const rootEl = document.getElementById('root');
     const vm = new Vue({
       router,
       store,
       render: (h) =>
-        h('div', { attrs: { id: 'root' } }, [h(App, {}, [postOuterHTML])]),
+        h('div', { attrs: { id: 'root' } }, [h(App, {}, [postEl?.outerHTML])]),
     });
     vm.$mount(rootEl);
+    window.$vm = vm;
   });
