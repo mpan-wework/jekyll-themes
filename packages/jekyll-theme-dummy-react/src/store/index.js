@@ -1,4 +1,4 @@
-import createStore from './createStore';
+import createStore from '@mpan-wework/react-store';
 import site from './site';
 
 const modules = {
