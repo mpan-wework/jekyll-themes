@@ -5,6 +5,6 @@ const modules = {
   site,
 };
 
-const { StoreProvider, useStore } = createStore(modules);
+const { StoreProvider, useStore } = createStore(modules, true);
 
 export { StoreProvider, useStore };

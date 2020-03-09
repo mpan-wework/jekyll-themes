@@ -10,7 +10,6 @@ export default {
   },
   storeActions: {
     load: async ({ state, commit }, payload) => {
-      console.debug(state);
       commit({ type: MUTATION.REFRESH_BASEURL });
       try {
         const resp = await fetch(`${window.baseurl}/site.json`);
@@ -27,7 +26,6 @@ export default {
     },
   },
   reducer: (state, action) => {
-    console.debug('commit', action);
     switch (action.type) {
       case MUTATION.REFRESH_BASEURL:
         const baseurl = window.baseurl;
