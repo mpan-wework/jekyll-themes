@@ -5,11 +5,7 @@ import styles from './NavSide.module.scss';
 const NavSide = () => {
   return (
     <div className={styles.NavSide}>
-      <Link
-        to={{ pathname: '/' }}
-      >
-        Home
-      </Link>
+      <Link to={{ pathname: '/' }}>Home</Link>
     </div>
   );
 };
