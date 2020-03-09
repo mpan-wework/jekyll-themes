@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable-next-line vue/no-v-html -->
   <div class="HtmlWrapper" v-html="html" />
 </template>
 
@@ -6,7 +7,10 @@
 export default {
   name: 'HtmlWrapper',
   props: {
-    html: String,
+    html: {
+      type: String,
+      default: () => '',
+    },
   },
 };
 </script>
