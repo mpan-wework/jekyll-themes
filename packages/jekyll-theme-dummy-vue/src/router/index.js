@@ -17,8 +17,9 @@ router.beforeEach((to, _, next) => {
   if (to.path === '/' && urlMatch) {
     // /posts/xxx#/ => /posts/xxx#/posts/xxx
     next(urlMatch[0]);
+  } else {
+    next();
   }
-  next();
 });
 
 router.afterEach((to) => {

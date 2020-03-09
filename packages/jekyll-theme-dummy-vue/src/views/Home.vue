@@ -2,7 +2,7 @@
   <div class="home">
     <ul>
       <li v-for="post of posts" :key="post.url">
-        <a :href="postUrl(post)">{{ post.title }}</a>
+        <a @click="readPost(post)">{{ post.title }}</a>
       </li>
     </ul>
   </div>
@@ -20,8 +20,10 @@ export default {
     this.$store.dispatch('site/load');
   },
   methods: {
-    postUrl(post) {
-      return `${this.$store.state.site.baseurl}${post.url}`;
+    readPost(post) {
+      this.$store.dispatch('route/replace', { post }).then(() => {
+        this.$router.push(post.url);
+      });
     },
   },
 };
