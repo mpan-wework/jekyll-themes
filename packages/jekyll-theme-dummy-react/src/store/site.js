@@ -8,7 +8,7 @@ export default {
     baseurl: null,
     posts: [],
   },
-  storeActions: {
+  verbs: {
     load: async ({ state, commit }, payload) => {
       commit({ type: MUTATION.REFRESH_BASEURL });
       try {
