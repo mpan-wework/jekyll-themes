@@ -12,7 +12,7 @@ const getBaseurl = async () => {
     }
     baseurl += `/${parts[i]}`;
   }
-  (window as any).baseurl = baseurl;
+  window.baseurl = baseurl;
 };
 
 export default getBaseurl;

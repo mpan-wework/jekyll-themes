@@ -9,7 +9,7 @@ export default {
     posts: [],
   },
   verbs: {
-    load: async ({ state, commit }, payload) => {
+    load: async ({ commit }) => {
       commit({ type: MUTATION.REFRESH_BASEURL });
       try {
         const resp = await fetch(`${window.baseurl}/site.json`);

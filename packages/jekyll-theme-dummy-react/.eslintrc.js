@@ -1,8 +1,19 @@
 module.exports = {
-  extends: ['react-app', 'prettier/react'],
-  plugins: ['prettier'],
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'react-app',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/react',
+  ],
+  plugins: [
+    '@typescript-eslint',
+    'prettier',
+  ],
   parser: 'babel-eslint',
   rules: {
+    '@typescript-eslint/explicit-function-return-type': [
+      'off',
+    ],
     'prettier/prettier': [
       'warn',
       {
