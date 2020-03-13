@@ -2,7 +2,7 @@ import createStore from '@mpan-wework/react-store';
 import site from './site';
 import post from './post';
 
-const modules = {
+const modules: any = {
   site,
   post,
 };

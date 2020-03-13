@@ -2,7 +2,7 @@ const MUTATION = {
   SET_POST: 'post/setPost',
 };
 
-export default {
+const post = {
   state: {
     post: null,
     content: '',
@@ -39,3 +39,5 @@ export default {
     }
   },
 };
+
+export default post;

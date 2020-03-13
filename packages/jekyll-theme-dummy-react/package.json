@@ -24,6 +24,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "@types/node": "^13.9.1",
+    "@types/react": "^16.9.23",
     "history": "^4.10.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -62,6 +64,6 @@
     "node-sass": "^4.12.0",
     "prettier": "^1.19.1",
     "rewire": "^4.0.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   }
 }
