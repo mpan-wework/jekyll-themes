@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useStore } from '../store';
 import HtmlWrapper from '../components/html/HtmlWrapper';
@@ -18,11 +18,23 @@ const Post = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.state]);
 
+  const content = useMemo(() => {
+    if (state.post.content) {
+      const el = document.createElement('div');
+      el.innerHTML = state.post.content;
+      const outerHTML = el.getElementsByTagName('main')[0]?.outerHTML || '';
+      el.remove();
+      return outerHTML;
+    }
+
+    return '';
+  }, [state.post.content]);
+
   if (!location.state) {
     return <HtmlWrapper html={children} />;
   }
 
-  return <HtmlWrapper html={state.post.content} />;
+  return <HtmlWrapper html={content} />;
 };
 
 export default Post;
