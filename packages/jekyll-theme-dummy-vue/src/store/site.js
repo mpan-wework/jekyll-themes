@@ -1,6 +1,7 @@
 const MUTATION = {
   REFRESH_BASEURL: 'refreshBaseurl',
   SET_POSTS: 'setPosts',
+  SET_DISQUS: 'setDisqus',
 };
 
 export default {
@@ -8,6 +9,7 @@ export default {
   state: {
     baseurl: null,
     posts: [],
+    disqus: null,
   },
   actions: {
     load: async ({ commit, state }) => {
@@ -17,6 +19,9 @@ export default {
         const site = await resp.json();
         if (site?.posts) {
           commit(MUTATION.SET_POSTS, { posts: site.posts });
+        }
+        if (site?.disqus) {
+          commit(MUTATION.SET_DISQUS, { disqus: site.disqus });
         }
       } catch (error) {
         console.error(error);
@@ -29,6 +34,9 @@ export default {
     },
     [MUTATION.SET_POSTS]: (state, { posts }) => {
       state.posts = posts;
+    },
+    [MUTATION.SET_DISQUS]: (state, { disqus }) => {
+      state.disqus = disqus;
     },
   },
 };

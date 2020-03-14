@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueDisqus from 'vue-disqus';
 import getBaseurl from './util/baseurl';
 import App from './App.vue';
 import router from './router';

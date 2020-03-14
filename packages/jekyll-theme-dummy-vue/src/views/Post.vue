@@ -1,6 +1,9 @@
 <template>
   <div v-if="downloading">Downloading</div>
-  <HtmlWrapper v-else :html="content || original" />
+  <div v-else>
+    <HtmlWrapper :html="content || original" />
+    <VueDisqus v-if="discus" :shortname="discus" />
+  </div>
 </template>
 
 <script>
@@ -27,6 +30,9 @@ export default {
       }
 
       return '';
+    },
+    discus() {
+      return this.$store.state.site.discus;
     },
   },
   mounted() {
