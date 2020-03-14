@@ -1,6 +1,13 @@
 <template>
   <div v-if="downloading">Downloading</div>
-  <HtmlWrapper v-else :html="content || original" />
+  <div v-else>
+    <HtmlWrapper :html="content || original" />
+    <VueDisqus
+      v-if="disqusShortName"
+      :shortname="disqusShortName"
+      :identifier="disqusIdentifier"
+    />
+  </div>
 </template>
 
 <script>
@@ -28,16 +35,20 @@ export default {
 
       return '';
     },
+    disqusShortName() {
+      return this.$store.state.site.disqus;
+    },
+    disqusIdentifier() {
+      return this.$route.path.replace(/[^a-zA-Z0-9]/g, '-');
+    },
   },
-  mounted() {
-    this.$store
-      .dispatch('post/downloading')
-      .then(() =>
-        this.$store.dispatch('post/download', {
-          post: this.$store.state.route.props.post || {},
-        })
-      )
-      .then(() => this.$store.dispatch('post/downloaded'));
+  async mounted() {
+    await this.$store.dispatch('site/load');
+    await this.$store.dispatch('post/downloading');
+    await this.$store.dispatch('post/download', {
+      post: this.$store.state.route.props.post || {},
+    });
+    await this.$store.dispatch('post/downloaded');
   },
 };
 </script>
