@@ -1,5 +1,6 @@
 <template>
-  <HtmlWrapper :html="content || original" />
+  <div v-if="downloading">Downloading</div>
+  <HtmlWrapper v-else :html="content || original" />
 </template>
 
 <script>
@@ -9,6 +10,9 @@ export default {
   name: 'Post',
   components: { HtmlWrapper },
   computed: {
+    downloading() {
+      return this.$store.state.post.downloading;
+    },
     original() {
       return this.$slots.default[0].text;
     },
@@ -26,9 +30,14 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('post/download', {
-      post: this.$store.state.route.props.post || {},
-    });
+    this.$store
+      .dispatch('post/downloading')
+      .then(() =>
+        this.$store.dispatch('post/download', {
+          post: this.$store.state.route.props.post || {},
+        })
+      )
+      .then(() => this.$store.dispatch('post/downloaded'));
   },
 };
 </script>
