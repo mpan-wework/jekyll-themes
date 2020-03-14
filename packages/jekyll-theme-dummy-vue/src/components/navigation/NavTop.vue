@@ -22,8 +22,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-@import '../../sass/styles.less';
+<style lang="scss" scoped>
+@import '../../sass/styles.scss';
 .NavTop {
   display: flex;
   justify-content: flex-start;
@@ -31,8 +31,8 @@ export default {
   height: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: @primaryBgColor;
-  color: @primaryColor;
+  background-color: $primaryBgColor;
+  color: $primaryColor;
   border-radius: 0.25rem;
 }
 </style>

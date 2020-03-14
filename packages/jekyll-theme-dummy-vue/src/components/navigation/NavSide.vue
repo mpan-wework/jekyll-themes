@@ -12,8 +12,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-@import '../../sass/styles.less';
+<style lang="scss" scoped>
+@import '../../sass/styles.scss';
 .NavSide {
   display: flex;
   flex-direction: column;
@@ -22,12 +22,12 @@ export default {
   height: 100%;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: @primaryBgColor;
-  color: @primaryColor;
+  background-color: $primaryBgColor;
+  color: $primaryColor;
   border-radius: 0.25rem;
 
   > a {
-    color: @primaryColor;
+    color: $primaryColor;
     text-decoration: none;
   }
 }
