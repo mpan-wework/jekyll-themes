@@ -26,6 +26,11 @@ export default {
     NavSide,
     NavTop,
   },
+  computed: {
+    vuex() {
+      return this.$store.state;
+    },
+  },
 };
 </script>
 
