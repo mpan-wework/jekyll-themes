@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueDisqus from 'vue-disqus';
 import getBaseurl from './util/baseurl';
 import App from './App.vue';
 import router from './router';
@@ -10,6 +11,7 @@ window.VUE_APP_VERSION = process.env.VUE_APP_VERSION;
 
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
+Vue.use(VueDisqus);
 
 Promise.resolve()
   .then(getBaseurl)
