@@ -3,6 +3,8 @@ import getBaseurl from './util/baseurl';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import '@primer/css/index.scss';
+import '@primer/css/markdown/index.scss';
 
 window.VUE_APP_VERSION = process.env.VUE_APP_VERSION;
 
