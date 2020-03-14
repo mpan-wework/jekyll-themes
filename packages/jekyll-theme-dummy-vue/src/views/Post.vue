@@ -61,7 +61,9 @@ export default {
     await this.$store.dispatch('site/load');
     await this.$store.dispatch('post/downloading');
     await this.$store.dispatch('post/download', {
-      post: this.$store.state.route.props.post || {},
+      post: this.$store.state.route.props.post || {
+        url: this.$route.path,
+      },
     });
     await this.$store.dispatch('post/downloaded');
   },
