@@ -8,12 +8,16 @@ const Post = ({ children }) => {
   const location = useLocation();
   useEffect(() => {
     if (location.state) {
-      dispatch({
-        type: 'post/download',
-        payload: {
-          post: location.state.post,
-        },
-      });
+      dispatch({ type: 'post/downloading' })
+        .then(() =>
+          dispatch({
+            type: 'post/download',
+            payload: {
+              post: location.state.post,
+            },
+          }),
+        )
+        .then(() => dispatch({ type: 'post/downloaded' }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.state]);
@@ -29,6 +33,10 @@ const Post = ({ children }) => {
 
     return '';
   }, [state.post.content]);
+
+  if (state.post.downloading) {
+    return <div>Downloading</div>;
+  }
 
   if (!location.state) {
     return <HtmlWrapper html={children} />;

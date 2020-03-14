@@ -1,13 +1,27 @@
 const MUTATION = {
+  SET_DOWNLOADING: 'post/setDownloading',
   SET_POST: 'post/setPost',
 };
 
 const post = {
   state: {
+    downloading: false,
     post: null,
     content: '',
   },
   verbs: {
+    downloading: async ({ commit }) => {
+      commit({
+        type: MUTATION.SET_DOWNLOADING,
+        payload: { downloading: true },
+      });
+    },
+    downloaded: async ({ commit }) => {
+      commit({
+        type: MUTATION.SET_DOWNLOADING,
+        payload: { downloading: false },
+      });
+    },
     download: async ({ commit, rootState }, payload) => {
       const { post } = payload;
       if (!post.url) {
@@ -33,6 +47,9 @@ const post = {
       case MUTATION.SET_POST:
         const { post, content = '' } = action.payload;
         return { ...state, post, content };
+      case MUTATION.SET_DOWNLOADING:
+        const { downloading } = action.payload;
+        return { ...state, downloading };
       default:
         console.error(action);
         return { ...state };
