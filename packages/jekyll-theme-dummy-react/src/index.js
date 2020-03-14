@@ -4,6 +4,8 @@ import { createHashHistory } from 'history';
 import getBaseurl from './util/baseurl';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import '@primer/css/index.scss';
+import '@primer/css/markdown/index.scss';
 
 window.REACT_APP_VERSION = process.env.REACT_APP_VERSION;
 
