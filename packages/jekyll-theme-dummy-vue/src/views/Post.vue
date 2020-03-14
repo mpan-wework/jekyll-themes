@@ -13,7 +13,16 @@ export default {
       return this.$slots.default[0].text;
     },
     content() {
-      return this.$store.state.post.content;
+      const content = this.$store.state.post.content;
+      if (content) {
+        const el = document.createElement('div');
+        el.innerHTML = content;
+        const outerHTML = el.getElementsByTagName('main')[0]?.outerHTML || '';
+        el.remove();
+        return outerHTML;
+      }
+
+      return '';
     },
   },
   mounted() {

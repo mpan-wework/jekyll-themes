@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable-next-line vue/no-v-html -->
-  <div class="HtmlWrapper" v-html="html" />
+  <div class="HtmlWrapper markdown-body" v-html="html" />
 </template>
 
 <script>
