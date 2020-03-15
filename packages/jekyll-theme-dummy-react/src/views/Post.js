@@ -1,26 +1,30 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
+import useMount from 'react-use/lib/useMount';
 import { useStore } from '../store';
 import HtmlWrapper from '../components/html/HtmlWrapper';
 
 const Post = ({ children }) => {
   const { state, dispatch } = useStore();
   const location = useLocation();
-  useEffect(() => {
-    if (location.state) {
-      dispatch({ type: 'post/downloading' })
-        .then(() =>
-          dispatch({
-            type: 'post/download',
-            payload: {
-              post: location.state.post,
-            },
-          }),
-        )
-        .then(() => dispatch({ type: 'post/downloaded' }));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.state]);
+
+  const load = useCallback(async () => {
+    await dispatch({ type: 'site/load' });
+    await dispatch({ type: 'post/downloading' });
+    await dispatch({
+      type: 'post/download',
+      payload: {
+        post: location.state?.post || {
+          url: location.pathname,
+        },
+      },
+    });
+    await dispatch({ type: 'post/downloaded' });
+  }, [location.state, location.pathname, dispatch]);
+
+  useMount(() => {
+    load();
+  });
 
   const content = useMemo(() => {
     if (state.post.content) {
@@ -38,11 +42,7 @@ const Post = ({ children }) => {
     return <div>Downloading</div>;
   }
 
-  if (!location.state) {
-    return <HtmlWrapper html={children} />;
-  }
-
-  return <HtmlWrapper html={content} />;
+  return <HtmlWrapper html={content || children} />;
 };
 
 export default Post;

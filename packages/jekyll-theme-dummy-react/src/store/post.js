@@ -31,7 +31,7 @@ const post = {
         });
       }
       try {
-        const resp = await fetch(`${rootState.site.baseurl}${post.url}`);
+        const resp = await fetch(`${rootState.site.baseurl || window.baseurl}${post.url}`);
         const content = await resp.text();
         commit({
           type: MUTATION.SET_POST,
