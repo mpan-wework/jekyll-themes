@@ -51,8 +51,8 @@ export default {
 
       return {
         shortname,
-        identifier,
-        title: identifier,
+        identifier: `id${identifier}`,
+        title: `title${identifier}`,
         url,
       };
     },
