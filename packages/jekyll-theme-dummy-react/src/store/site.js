@@ -1,12 +1,14 @@
 const MUTATION = {
   REFRESH_BASEURL: 'site/refreshBaseurl',
   SET_POSTS: 'site/setPosts',
+  SET_DISQUS: 'site/setDisqus',
 };
 
 export default {
   state: {
     baseurl: null,
     posts: [],
+    disqus: null,
   },
   verbs: {
     load: async ({ commit }) => {
@@ -18,6 +20,12 @@ export default {
           commit({
             type: MUTATION.SET_POSTS,
             payload: { posts: site.posts },
+          });
+        }
+        if (site?.disqus) {
+          commit({
+            type: MUTATION.SET_DISQUS,
+            payload: { disqus: site.disqus },
           });
         }
       } catch (error) {
@@ -33,6 +41,9 @@ export default {
       case MUTATION.SET_POSTS:
         const { posts } = action.payload;
         return { ...state, posts };
+      case MUTATION.SET_DISQUS:
+        const { disqus } = action.payload;
+        return { ...state, disqus };
       default:
         console.error(action);
         return { ...state };
