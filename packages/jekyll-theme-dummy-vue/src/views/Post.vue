@@ -2,6 +2,7 @@
   <div v-if="downloading">Downloading</div>
   <div v-else>
     <HtmlWrapper :html="content || original" />
+    <input v-model="commenOn" type="checkbox" />
     <VueDisqus
       v-if="disqus.shortname"
       :shortname="disqus.shortname"
@@ -18,6 +19,11 @@ import HtmlWrapper from '../components/html/HtmlWrapper';
 export default {
   name: 'Post',
   components: { HtmlWrapper },
+  data() {
+    return {
+      commenOn: false,
+    };
+  },
   computed: {
     vuex() {
       return this.$store.state;
@@ -41,7 +47,7 @@ export default {
       return '';
     },
     disqus() {
-      if (!window.localStorage.getItem('disqus')) {
+      if (!this.commenOn) {
         return {};
       }
 
