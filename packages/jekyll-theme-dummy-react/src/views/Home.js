@@ -7,7 +7,10 @@ const Home = () => {
   const { state, dispatch } = useStore();
   const posts = useMemo(() => state.site?.posts || [], [state.site]);
 
-  useMount(async () => dispatch({ type: 'site/load' }));
+  useMount(async () => {
+    dispatch({ type: 'site/load' });
+    dispatch({ type: 'post/downloading' });
+  });
 
   return (
     <div className="home">
