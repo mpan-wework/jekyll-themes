@@ -18,6 +18,7 @@ export default {
   },
   async mounted() {
     this.$store.dispatch('site/load');
+    this.$store.dispatch('post/downloading');
   },
   methods: {
     readPost(post) {
