@@ -1,16 +1,22 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import useToggle from 'react-use/lib/useToggle';
 import Disqus from 'disqus-react';
 import { useStore } from '../../store';
+import styles from './Comment.module.scss';
+
+type Mode = 'none' | 'disqus';
 
 const Comment = () => {
   const { state } = useStore();
   const location = useLocation();
-  const [commentOn, toggleComment] = useToggle(false);
+  const [mode, setMode] = useState<Mode>('none');
+
+  const onModeChange = useCallback((value) => () => {
+    setMode(value)
+  }, []);
 
   const disqus = useMemo(() => {
-    if (!commentOn) {
+    if (mode !== 'disqus') {
       return {};
     }
 
@@ -23,15 +29,23 @@ const Comment = () => {
       title: `title${identifier}`,
       url,
     };
-  }, [commentOn, location.pathname, state.site]);
+  }, [mode, location.pathname, state.site]);
 
   return (
-    <div className="Comment">
-      <input
-        type="checkbox"
-        value={Number(commentOn)}
-        onChange={toggleComment}
-      />
+    <div className={styles.Comment}>
+      <div className={styles.mode}>
+        {['none', 'disqus'].map((value) => (
+          <span key={value}>
+            <input
+              type="radio"
+              value={value}
+              checked={value === mode}
+              onChange={onModeChange(value)}
+            />
+            <label>{value}</label>
+          </span>
+        ))}
+      </div>
       {disqus.shortname && (
         <Disqus.DiscussionEmbed
           shortname={disqus.shortname}

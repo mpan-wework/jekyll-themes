@@ -1,8 +1,12 @@
 {
   "disqus": "",
+  "github": {
+    "repository_nwo": ""
+  },
   "posts": [
     {
       "title": "Post1",
+      "pull_request_id": 1,
       "url": "/posts/1"
     }
   ]

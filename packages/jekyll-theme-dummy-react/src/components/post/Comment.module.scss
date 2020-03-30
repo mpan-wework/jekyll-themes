@@ -1,0 +1,9 @@
+.mode {
+  display: flex;
+  > span {
+    margin-right: 0.5rem;
+    > input {
+      margin-right: 0.5rem;
+    }
+  }
+}
