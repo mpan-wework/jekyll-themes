@@ -1,13 +1,18 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, FunctionComponent } from 'react';
 import { useLocation } from 'react-router-dom';
 import useMount from 'react-use/lib/useMount';
 import { useStore } from '../store';
 import HtmlWrapper from '../components/html/HtmlWrapper';
 import Comment from '../components/post/Comment';
+import useCanvasFavIcon from '../util/useCanvasFavIcon';
 
-const Post = ({ children }) => {
+type LocationState = {
+  post: Object;
+};
+
+const Post: FunctionComponent = ({ children }) => {
   const { state, dispatch } = useStore();
-  const location = useLocation();
+  const location = useLocation<LocationState>();
 
   const load = useCallback(async () => {
     await dispatch({ type: 'site/load' });
@@ -38,6 +43,13 @@ const Post = ({ children }) => {
 
     return '';
   }, [state.post.content]);
+
+  const draw = useCallback((ctx) => {
+    ctx.fillStyle = 'green';
+    ctx.fillRect(0, 0, 16, 16);
+  }, []);
+
+  useCanvasFavIcon({ width: 16, height: 16, draw });
 
   if (state.post.downloading) {
     return <div>Downloading</div>;
