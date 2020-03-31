@@ -9,6 +9,7 @@
 <script>
 import HtmlWrapper from '../components/html/HtmlWrapper';
 import Comment from '../components/post/Comment';
+import renderCanvasFavIcon from '../util/renderCanvasFavIcon';
 
 export default {
   name: 'Post',
@@ -45,6 +46,14 @@ export default {
       },
     });
     await this.$store.dispatch('post/downloaded');
+
+    renderCanvasFavIcon({ width: 16, height: 16, draw: this.draw });
+  },
+  methods: {
+    draw(ctx) {
+      ctx.fillStyle = 'green';
+      ctx.fillRect(0, 0, 16, 16);
+    },
   },
 };
 </script>

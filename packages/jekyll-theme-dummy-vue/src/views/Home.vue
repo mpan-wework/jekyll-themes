@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import renderCanvasFavIcon from '../util/renderCanvasFavIcon';
+
 export default {
   name: 'Home',
   computed: {
@@ -19,12 +21,17 @@ export default {
   async mounted() {
     this.$store.dispatch('site/load');
     this.$store.dispatch('post/downloading');
+    renderCanvasFavIcon({ width: 16, height: 16, draw: this.draw });
   },
   methods: {
     readPost(post) {
       this.$store.dispatch('route/replace', { post }).then(() => {
         this.$router.push(post.url);
       });
+    },
+    draw(ctx) {
+      ctx.fillStyle = 'yellow';
+      ctx.fillRect(0, 0, 16, 16);
     },
   },
 };
