@@ -2,6 +2,7 @@ const MUTATION = {
   REFRESH_BASEURL: 'refreshBaseurl',
   SET_POSTS: 'setPosts',
   SET_DISQUS: 'setDisqus',
+  SET_GITHUB: 'setGithub',
 };
 
 export default {
@@ -10,6 +11,7 @@ export default {
     baseurl: null,
     posts: [],
     disqus: null,
+    github: null,
   },
   actions: {
     load: async ({ commit, state }) => {
@@ -22,6 +24,9 @@ export default {
         }
         if (site?.disqus) {
           commit(MUTATION.SET_DISQUS, { disqus: site.disqus });
+        }
+        if (site?.github) {
+          commit(MUTATION.SET_GITHUB, { github: site.github });
         }
       } catch (error) {
         console.error(error);
@@ -37,6 +42,14 @@ export default {
     },
     [MUTATION.SET_DISQUS]: (state, { disqus }) => {
       state.disqus = disqus;
+    },
+    [MUTATION.SET_GITHUB]: (state, { github }) => {
+      try {
+        const [owner, repo] = github.repository_nwo.split('/');
+        state.github = { owner, repo };
+      } catch (error) {
+        console.error(MUTATION.SET_GITHUB);
+      }
     },
   },
 };

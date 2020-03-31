@@ -2,28 +2,17 @@
   <div v-if="downloading">Downloading</div>
   <div v-else>
     <HtmlWrapper :html="content || original" />
-    <input v-model="commenOn" type="checkbox" />
-    <VueDisqus
-      v-if="disqus.shortname"
-      :shortname="disqus.shortname"
-      :identifier="disqus.identifier"
-      :title="disqus.title"
-      :url="disqus.url"
-    />
+    <Comment />
   </div>
 </template>
 
 <script>
 import HtmlWrapper from '../components/html/HtmlWrapper';
+import Comment from '../components/post/Comment';
 
 export default {
   name: 'Post',
-  components: { HtmlWrapper },
-  data() {
-    return {
-      commenOn: false,
-    };
-  },
+  components: { HtmlWrapper, Comment },
   computed: {
     vuex() {
       return this.$store.state;
@@ -45,22 +34,6 @@ export default {
       }
 
       return '';
-    },
-    disqus() {
-      if (!this.commenOn) {
-        return {};
-      }
-
-      const shortname = this.$store.state.site.disqus;
-      const identifier = this.$route.path.replace(/[^a-zA-Z0-9]/g, '');
-      const url = `${this.$store.state.site.baseurl}${this.$route.path}`;
-
-      return {
-        shortname,
-        identifier: `id${identifier}`,
-        title: `title${identifier}`,
-        url,
-      };
     },
   },
   async mounted() {
